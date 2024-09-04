@@ -1,0 +1,499 @@
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(black, #07071a);
+  color: white;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.container {
+  max-width: 90%;
+}
+
+.container:last-of-type {
+  padding-bottom: 50px;
+}
+
+.cta-button {
+  display: inline-block;
+  font-size: 1.1em;
+  border: none;
+  padding: 1rem 2rem;
+  margin-right: 2rem;
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  background: linear-gradient(to right, #0062c4, #001c38);
+  border-radius: 5px;
+  font-weight: 300;
+  transition: transform 0.3s ease-in-out;
+}
+
+.normal-button {
+  display: inline-block;
+  font-size: 1.1em;
+  padding: 1rem 2rem;
+  margin-right: 2rem;
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  background: transparent;
+  border: 1px solid #656565;
+  border-radius: 5px;
+  font-weight: 300;
+  transition: transform 0.3s ease-in-out;
+}
+.cta-button i, .cta-button span, .normal-button i, .faq-btn i {
+  margin-left: 0.7rem; 
+}
+
+.cta-button:hover, .normal-button:hover {
+  transform: scale(1.1);
+}
+
+
+/* Navigation */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 13%;
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 1);
+}
+
+.logo img {
+  vertical-align: middle;
+  max-height: 50px;
+  width: auto;
+}
+
+.menu-icon {
+  display: none;
+  cursor: pointer;
+  font-size: 24px;
+}
+
+.nav-links {
+  display: flex;
+}
+
+.nav-item {
+  position: relative;
+  margin-left: 30px;
+  cursor: pointer;
+  padding: 10px 0;
+}
+
+.nav-item span {
+  color: #fff; 
+  display: inline-block;
+  transition: color 0.3s ease;
+}
+
+
+.nav-item.active span {
+  color: #007bff; 
+}
+
+.nav-item i {
+  margin-left: 5px;
+  transition: transform 0.3s ease;
+}
+
+.nav-item:hover .subnav {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  max-height: 500px; 
+}
+
+
+.subnav {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  min-width: 200px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, visibility 0.3s;
+  max-height: 0;
+  overflow: hidden;
+}
+
+.nav-item.active .subnav {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  max-height: 500px; 
+}
+
+.subnav a {
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.subnav a:hover {
+  transform: scale(1.05);
+  z-index: 1; 
+  color: #007bff;
+}
+
+
+.nav-title {
+  display: none; 
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 3rem; 
+  margin-bottom: 1rem; 
+}
+
+
+.nav-title a {
+  color: #fff; 
+  text-decoration: none; 
+}
+
+/* Grid layout for social media icons */
+.social-icons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 10%;
+  padding: 10% 30% 0 0; 
+}
+
+.social-icons a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.social-icons img {
+  width: 50px;
+  height: auto;
+}
+
+
+
+/* Genshin Section Styles */
+#genshin-section {
+  padding: 10% 14% 0 14%;
+}
+
+#price-list {
+  padding: 5% 14% 5%;
+}
+
+.title-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+#genshin-icon {
+  width: 150px;
+  height: 150px;
+}
+
+.titles {
+  display: flex;
+  flex-direction: column;
+}
+
+.main-title {
+  font-size: 2em;
+  color: #ffffff;
+  margin: 0;
+}
+
+.sub-title {
+  font-size: 1em;
+  color: #1c86dd;
+  margin: 5px 0 0;
+}
+
+/* Filter Buttons Styles */
+#filter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.filter-btn {
+  background-color: transparent;
+  border: none;
+  color: white;
+  padding: 10px 15px;
+  border: 1px solid #1b73df;
+  font-size: 1em;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.filter-btn:hover {
+  transform: scale(1.05);
+}
+
+.filter-btn.active {
+  background-color: #1b73df;
+}
+
+/* Price List Styles */
+#price-list h2 {
+  font-size: 1.8em;
+  margin-bottom: 20px;
+}
+
+#sheet-data {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: left;
+}
+
+.card {
+  background-color: #111111;
+  border-radius: 15px;
+  padding: 2% 4%;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid #162d49;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 1);
+}
+.card h3 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  color: #eaeaea; /* Light color for the title */
+}
+
+.card .features {
+  margin: 10px 0;
+  color: #b8b8b8; /* Light color for features */
+}
+
+.card .prices {
+  display: flex;
+  flex-direction: column;
+  gap: 5px; /* Space between price entries */
+}
+
+/* PHP Price: larger and white */
+.php-price {
+  font-size: 1.2em; /* Larger size for PHP */
+  color: #ffffff; /* White color */
+}
+
+/* USD Price: smaller and gray */
+.usd-price {
+  font-size: 0.9em; /* Smaller size for USD */
+  color: #b8b8b8; /* Gray color */
+}
+
+
+/* Footer */
+
+#footer_1 {
+  background: #11103b;  
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+#footer_1 .container.footer {
+  padding: 0; 
+  margin: 0;  
+}
+
+.footer-links {
+  margin: 0;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 8%; 
+}
+
+.footer-links a {
+  color: white;
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+  transition: color 0.3s ease-in-out; 
+}
+
+.footer-links a:hover {
+  color: #007bff;
+}
+
+#footer_2 {
+  background: linear-gradient(to right, #0a0317, #11103b, #00449f); 
+  padding: 20px 0;
+  text-align: center;
+}
+
+
+.footer-logo img {
+  vertical-align: middle;
+  margin: 5% 0 0 0;
+  max-height: 150px; 
+  width: auto;
+}
+
+#cr {
+  color: white;
+  font-weight: 100;
+  padding: 0;
+  margin: 0;
+}
+
+
+
+
+
+
+
+
+@media screen and (max-width: 768px) {
+  nav {
+    padding: 10px 5%;
+    
+  }
+
+  .menu-icon {
+    display: block;
+    position: relative;
+    z-index: 1001;
+  }
+
+  .nav-title {
+    display: block;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -280px;
+    height: 100vh;
+    width: 250px;
+    background: rgba(0, 0, 0, 0.9);
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 60px;
+    padding-left: 30px;
+    transition: right 0.6s cubic-bezier(0.42, 0, 0.58, 1);
+    overflow-y: auto;
+    z-index: 999;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(1, 23, 78, 0.9), rgba(13, 26, 83, 0.8)), url('kamisato\ crest.jpg');
+    background-size: cover;
+    background-position: center;
+    box-shadow: -10px 0 20px rgba(0, 0, 0, 0.9);
+  }
+
+  .nav-links.active {
+    right: 0;
+  }
+
+  .nav-item {
+    margin: 10px 0;
+  }
+
+  .logo img {
+    max-height: 20px;
+  }
+
+  .nav-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 999;
+  }
+
+  .nav-backdrop.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .subnav {
+    position: static;
+    background: none;
+    box-shadow: none;
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+    display: none;
+  }
+
+  .subnav {
+    display: none;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 0.5s ease-in-out, max-height 1s ease-in-out; 
+  }
+  
+  .nav-item.active .subnav {
+    display: block;
+    opacity: 1;
+    max-height: 500px; 
+  }
+  
+  .nav-item.active .subnav {
+    display: block;
+  }
+
+
+  .cta-button, .normal-button {
+    font-size: 0.7em;
+    padding: 0.5rem 1rem;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    display: inline-block;
+  }
+
+
+  .footer-links {
+    font-size: 0.7rem;
+  }
+
+
+  .footer-logo img {
+    vertical-align: middle;
+    margin: 5% 0 5% 0;
+    max-height: 60px; 
+    width: auto;
+  }
+
+}
