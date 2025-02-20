@@ -1,4 +1,3 @@
-
 class CardGenerator {
     generateCardHTML(row, sheetConfig) {
         if (!row || !sheetConfig) {
@@ -89,7 +88,7 @@ class CardGenerator {
         // Define all pricing data
         const prices = {
             default: {
-                label: row[config.columns.DEFAULT_LABEL] || 'Default Price',
+                label: row[config.columns.DEFAULT_LABEL] || '1 Piece',
                 php: {
                     min: row[config.columns.PHP_MIN],
                     max: row[config.columns.PHP_MAX]
@@ -120,23 +119,12 @@ class CardGenerator {
                     min: row[config.columns.PRICE_2_USD_MIN],
                     max: row[config.columns.PRICE_2_USD_MAX]
                 }
-            },
-            price3: {
-                label: row[config.columns.PRICE_3_LABEL],
-                php: {
-                    min: row[config.columns.PRICE_3_PHP_MIN],
-                    max: row[config.columns.PRICE_3_PHP_MAX]
-                },
-                usd: {
-                    min: row[config.columns.PRICE_3_USD_MIN],
-                    max: row[config.columns.PRICE_3_USD_MAX]
-                }
             }
         };
     
         // Format a price range
         const formatPrice = (min, max, currency) => {
-            if (!min && !max) return 'Unavailable';
+            if (!min && !max) return 'N/A';
             if (!max || min === max) return `${currency}${min}`;
             return `${currency}${min} - ${currency}${max}`;
         };
@@ -145,7 +133,6 @@ class CardGenerator {
         const initialPhpPrice = formatPrice(prices.default.php.min, prices.default.php.max, '₱');
         const initialUsdPrice = formatPrice(prices.default.usd.min, prices.default.usd.max, '$');
     
-        // Generate price variation buttons
         // Generate price variation buttons
         const getPriceButtons = () => {
             let buttons = [
@@ -169,14 +156,6 @@ class CardGenerator {
                     </button>`
                 );
             }
-
-            if (prices.price3.label) {
-                buttons.push(
-                    `<button type="button" class="price-btn" data-price-type="price3">
-                        ${prices.price3.label}
-                    </button>`
-                );
-            }
     
             return buttons.join('');
         };
@@ -196,11 +175,8 @@ class CardGenerator {
                 data-price2-php-min="${row[config.columns.PRICE_2_PHP_MIN] || ''}"
                 data-price2-php-max="${row[config.columns.PRICE_2_PHP_MAX] || ''}"
                 data-price2-usd-min="${row[config.columns.PRICE_2_USD_MIN] || ''}"
-                data-price2-usd-max="${row[config.columns.PRICE_2_USD_MAX] || ''}"
-                data-price3-php-min="${row[config.columns.PRICE_3_PHP_MIN] || ''}"
-                data-price3-php-max="${row[config.columns.PRICE_3_PHP_MAX] || ''}"
-                data-price3-usd-min="${row[config.columns.PRICE_3_USD_MIN] || ''}"
-                data-price3-usd-max="${row[config.columns.PRICE_3_USD_MAX] || ''}">
+                data-price2-usd-max="${row[config.columns.PRICE_2_USD_MAX] || ''}">
+
                 
                 <!-- Card Header -->
                 <div class="card-header">
@@ -285,28 +261,22 @@ class CardGenerator {
         if (items.length === 0) return '';
     
         const itemStyles = {
-            description: `
+            base: `
+                display: flex; 
+                align-items: center; 
+                margin: 0;
+                width: 100%;
                 margin-bottom: 8px;
+                flex-wrap: wrap;
+            `,
+            content: `
+                display: inline;
                 font-weight: 500;
-                color:rgb(203, 203, 203);
-                line-height: 0.5;
             `,
-            bulletList: `
-                list-style: none;
-                padding-left: 20px;
-                margin: 4px 0;
-            `,
-            bulletItem: `
-                position: relative;
-                padding-left: 15px;
-                margin-bottom: 6px;
-                color: #ffffff;
-                &::before {
-                    content: "•";
-                    position: absolute;
-                    left: 0;
-                    color: #ffffff;
-                }
+            contentWrapper: `
+                display: inline-flex;
+                align-items: center;
+                gap: 6px;
             `,
             tag: `
                 padding: 3px 6px;
@@ -315,7 +285,16 @@ class CardGenerator {
                 text-transform: uppercase;
                 letter-spacing: 0.5px;
                 color: white;
-                margin-left: 8px;
+                white-space: nowrap;
+            `,
+            list: `
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
             `,
             gradients: {
                 gold: 'linear-gradient(45deg, #FFD700, #FFA500)',
@@ -328,11 +307,14 @@ class CardGenerator {
         };
     
         const tagTypes = {
-            '#L': { color: '##d12929', label: 'Limited' },
-            '#O': { color: '#4169E1', label: 'Optional' },
-            '#F': { color: '##55b455', label: 'Freebie' },
-            '#P': { color: '#cb6ce6', label: 'Promo' },
-            '#S': { 
+            '(#L)': { color: '#FF4444', label: 'Limited' },
+            '(#O)': { color: '#FF4444', label: 'Optional' },
+            '(#F)': { 
+                gradient: 'linear-gradient(45deg,rgb(65, 118, 209),rgb(85, 180, 85))',
+                label: 'Freebie' 
+            },
+            '(#P)': { color: '#FF4444', label: 'Promo' },
+            '(#S)': { 
                 gradient: 'linear-gradient(45deg, #FFD700, #FFA500)',
                 label: 'Special'
             }
@@ -351,7 +333,7 @@ class CardGenerator {
             let processedText = text;
             
             Object.entries(patterns).forEach(([pattern, gradient]) => {
-                const regex = new RegExp(`\\(${pattern}(.*?)\\)\\)`, 'g');
+                const regex = new RegExp(`\\(${pattern}(.*?)\\)`, 'g');
                 processedText = processedText.replace(regex, (match, content) => {
                     return `<span style="background: ${gradient}; -webkit-background-clip: text; background-clip: text; color: transparent;">${content.trim()}</span>`;
                 });
@@ -360,54 +342,37 @@ class CardGenerator {
             return processedText;
         };
     
-        let descriptionHtml = '';
-        let bulletListHtml = '';
-    
-        items.forEach(item => {
+        const listItems = items.map(item => {
             const trimmedItem = item.trim();
             
-            // Check if item is a bullet point
-            if (trimmedItem.startsWith('(-)')) {
-                const bulletContent = trimmedItem.slice(3).trim();
-                bulletListHtml += `
-                    <li style="${itemStyles.bulletItem}">
-                        ${processHighlightedText(bulletContent)}
-                    </li>
-                `;
-            } else {
-                // Process tags
-                let content = trimmedItem;
-                let tagHtml = '';
-                
-                for (const [tag, style] of Object.entries(tagTypes)) {
-                    if (trimmedItem.startsWith(tag)) {
-                        content = trimmedItem.slice(tag.length).trim();
-                        const tagStyle = style.gradient ?
-                            `${itemStyles.tag} background: ${style.gradient}; text-shadow: 1px 1px 1px rgba(0,0,0,0.2);` :
-                            `${itemStyles.tag} background-color: ${style.color};`;
-                        tagHtml = `<span style="${tagStyle}">${style.label}</span>`;
-                        break;
-                    }
+            for (const [tag, style] of Object.entries(tagTypes)) {
+                if (trimmedItem.startsWith(tag)) {
+                    const content = trimmedItem.replace(tag, '').trim();
+                    const contentStyle = style.gradient ? 
+                        `${itemStyles.content} background: ${style.gradient}; -webkit-background-clip: text; background-clip: text; color: transparent;` :
+                        `${itemStyles.content} color: ${style.color};`;
+                    
+                    const tagStyle = style.gradient ?
+                        `${itemStyles.tag} background: ${style.gradient}; text-shadow: 1px 1px 1px rgba(0,0,0,0.2);` :
+                        `${itemStyles.tag} background-color: ${style.color};`;
+    
+                    const processedContent = processHighlightedText(content);
+    
+                    return `
+                        <li style="${itemStyles.base}">
+                            <div style="${itemStyles.contentWrapper}">
+                                <span style="${contentStyle}">${processedContent}</span>
+                                <span style="${tagStyle}">${style.label}</span>
+                            </div>
+                        </li>
+                    `;
                 }
-                
-                descriptionHtml += `
-                    <p style="${itemStyles.description}">
-                        ${processHighlightedText(content)}
-                        ${tagHtml}
-                    </p>
-                `;
             }
-        });
+            
+            return `<li style="${itemStyles.base}"><span style="${itemStyles.content}">${processHighlightedText(trimmedItem)}</span></li>`;
+        }).join('');
     
-        const bulletListWrapper = bulletListHtml ? 
-            `<ul style="${itemStyles.bulletList}">${bulletListHtml}</ul>` : '';
-    
-        return `
-            <div class="description-container">
-                ${descriptionHtml}
-                ${bulletListWrapper}
-            </div>
-        `;
+        return `<ul style="${itemStyles.list}" class="card-list">${listItems}</ul>`;
     }
 
     setupCardListeners() {
@@ -500,9 +465,9 @@ class CardGenerator {
         const minNum = isValidPrice(min) ? parseFloat(min) : null;
         const maxNum = isValidPrice(max) ? parseFloat(max) : null;
     
-        // If both values are invalid, return Unavailable
+        // If both values are invalid, return N/A
         if (minNum === null && maxNum === null) {
-            return 'Unavailable';
+            return 'N/A';
         }
     
         // If only max is invalid or both values are equal, return only min
@@ -630,18 +595,6 @@ class CardGenerator {
                             usd: {
                                 min: card.dataset.price2UsdMin,
                                 max: card.dataset.price2UsdMax
-                            }
-                        };
-                        break;
-                    case 'price3':
-                        priceData = {
-                            php: {
-                                min: card.dataset.price3PhpMin,
-                                max: card.dataset.price3PhpMax
-                            },
-                            usd: {
-                                min: card.dataset.price3UsdMin,
-                                max: card.dataset.price3UsdMax
                             }
                         };
                         break;
