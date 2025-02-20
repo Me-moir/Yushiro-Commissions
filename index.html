@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="card.css">
+    <link rel="stylesheet" href="responsive.css">
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <button class="toggle-btn" aria-label="Toggle Sidebar">
+            <i class="fa-solid fa-chevron-right"></i>
+        </button>
+        
+        <nav class="sidebar">
+            <!-- Dashboard Section -->
+            <div class="sidebar-content">
+                <div class="nav-item with-divider">
+                    <div class="nav-link" data-dropdown="dashboard">
+                        <img src="images/yushiro-logo.png" alt="" class="nav-icon" />
+                        Home
+                    </div>
+                        
+                    <div class="dropdown-content" id="dashboard">
+                        <a href="#" class="nav-link" data-content="announcements">
+                            <i class="fa-solid fa-envelope-open"></i>
+                            Dashboard
+                        </a>
+
+                        <a href="#" class="nav-link" data-content="vouch">
+                            <i class="fa-solid fa-thumbs-up"></i>
+                            Feedback
+                        </a>
+                        <a href="#" class="nav-link" data-content="contact">
+                            <i class="fa-solid fa-comments"></i>
+                            Contact Us
+                        </a>
+                        <a href="#" class="nav-link" data-content="recharge">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            Recharge
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Maintenance Section -->
+                <div class="nav-item">
+                    <div class="nav-link" data-dropdown="maintenance">
+                        <img src="off.png" alt="Maintenance Icon" class="nav-icon" data-active-src="on.png" data-inactive-src="off.png" />
+                        Maintenance
+                    </div>
+                    <div class="dropdown-content" id="maintenance">
+                        <a href="#" class="nav-link" data-content="daily">
+                            <i class="fa-solid fa-list-check"></i>
+                            Daily
+                        </a>
+                        <a href="#" class="nav-link" data-content="weekly">
+                            <i class="fa-solid fa-list-check"></i>
+                            Weekly
+                        </a>
+                        <a href="#" class="nav-link" data-content="monthly">
+                            <i class="fa-solid fa-list-check"></i>
+                            Monthly
+                        </a>
+                        <a href="#" class="nav-link" data-content="patch">
+                            <i class="fa-solid fa-list-check"></i>
+                            Every Patch
+                        </a>
+                        <a href="#" class="nav-link" data-content="add ons">
+                            <i class="fa-solid fa-list-check"></i>
+                            Add Ons
+                        </a>
+                    </div>
+                </div>
+            
+                <!-- Resin Burn Section -->
+                <div class="nav-item">
+                    <div class="nav-link" data-dropdown="resin">
+                        <img src="off.png" alt="Maintenance Icon" class="nav-icon" data-active-src="on.png" data-inactive-src="off.png" />
+                        Resin Burn
+                    </div>
+                    <div class="dropdown-content" id="resin">
+                        <a href="#" class="nav-link" data-content="leylines">
+                            <i class="fas fa-user"></i>
+                            Ley Lines Blossom
+                        </a>
+                        <a href="#" class="nav-link" data-content="domain">
+                            <i class="fas fa-sliders-h"></i>
+                            Domains
+                        </a>
+                        <a href="#" class="nav-link" data-content="normal boss">
+                            <i class="fas fa-sliders-h"></i>
+                            Normal Bosses
+                        </a>
+                        <a href="#" class="nav-link" data-content="weekly boss">
+                            <i class="fas fa-sliders-h"></i>
+                            Weekly Bosses
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Material Farming Section -->
+                <div class="nav-item">
+                    <div class="nav-link" data-dropdown="Material Farming">
+                        <img src="off.png" alt="Maintenance Icon" class="nav-icon" data-active-src="on.png" data-inactive-src="off.png" />
+                        Material Farming
+                    </div>
+                    <div class="dropdown-content" id="Material Farming">
+                        <a href="#" class="nav-link" data-content="specialty">
+                            <i class="fas fa-user"></i>
+                            Local Specialty
+                        </a>
+                        <a href="#" class="nav-link" data-content="crafting">
+                            <i class="fas fa-sliders-h"></i>
+                            Crafting Materials
+                        </a>
+                        <a href="#" class="nav-link" data-content="serenitea">
+                            <i class="fas fa-sliders-h"></i>
+                            Serenitea Pot
+                        </a>
+                        <a href="#" class="nav-link" data-content="fishing">
+                            <i class="fas fa-sliders-h"></i>
+                            Fishing Materials
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Special Offerings Section -->
+                <div class="nav-item">
+                    <div class="nav-link" data-dropdown="Special Offerings">
+                        <img src="off.png" alt="Maintenance Icon" class="nav-icon" data-active-src="on.png" data-inactive-src="off.png" />
+                        Special Offerings
+                    </div>
+                    <div class="dropdown-content" id="Special Offerings">
+
+                        <a href="#" class="nav-link" data-content="oculi">
+                            <i class="fas fa-user"></i>
+                            Oculi
+                        </a>
+                        <a href="#" class="nav-link" data-content="sigils">
+                            <i class="fas fa-sliders-h"></i>
+                            Sigils
+                        </a>
+                        <a href="#" class="nav-link" data-content="offerings">
+                            <i class="fas fa-user"></i>
+                            Offering Systems
+                        </a>
+                    </div>
+                </div>
+ 
+        <!-- Waypoints Section -->
+        <div class="nav-item">
+            <div class="nav-link" data-dropdown="map-unlocking">
+                <img src="off.png" alt="Maintenance Icon" class="nav-icon" data-active-src="on.png" data-inactive-src="off.png" />
+                Map Unlocking
+            </div>
+            <div class="dropdown-content" id="map-unlocking">
+                <a href="#" class="nav-link" data-content="waypoints">
+                    <i class="fas fa-user"></i>
+                    Waypoints
+                </a>
+                <a href="#" class="nav-link" data-content="statue">
+                    <i class="fas fa-sliders-h"></i>
+                    Statue of Seven
+                </a>
+                <a href="#" class="nav-link" data-content="domains">
+                    <i class="fas fa-sliders-h"></i>
+                    Domains
+                </a>
+                <a href="#" class="nav-link" data-content="shrines">
+                    <i class="fas fa-sliders-h"></i>
+                    Shrine of Depth
+                </a>
+            </div>
+        </div>
+
+        <!-- Ascension -->
+        <div class="nav-item">
+            <div class="nav-link" data-dropdown="Ascension">
+                <img src="off.png" alt="Maintenance Icon" class="nav-icon" data-active-src="on.png" data-inactive-src="off.png" />
+                Ascension
+            </div>
+            <div class="dropdown-content" id="Ascension">
+                <a href="#" class="nav-link" data-content="Character">
+                    <i class="fas fa-user"></i>
+                    Character
+                </a>
+                <a href="#" class="nav-link" data-content="Weapon">
+                    <i class="fas fa-sliders-h"></i>
+                    Weapon
+                </a>
+                <a href="#" class="nav-link" data-content="Skills/Talents">
+                    <i class="fas fa-sliders-h"></i>
+                    Skills/Talents
+                </a>
+            </div>
+        </div>
+
+        <!-- Exploration -->
+        <div class="nav-item">
+            <div class="nav-link" data-dropdown="exploration">
+                <img src="off.png" alt="Maintenance Icon" class="nav-icon" data-active-src="on.png" data-inactive-src="off.png" />
+                Exploration
+            </div>
+            <div class="dropdown-content" id="exploration">
+                <a href="#" class="nav-link" data-content="Monstadt">
+                    <i class="fas fa-user"></i>
+                    Monstadt
+                </a>
+                <a href="#" class="nav-link" data-content="Dragonspine">
+                    <i class="fas fa-user"></i>
+                    Dragonspine
+                </a>
+                <a href="#" class="nav-link" data-content="Liyue">
+                    <i class="fas fa-sliders-h"></i>
+                    Liyue
+                </a>
+                <a href="#" class="nav-link" data-content="The-Chasm">
+                    <i class="fas fa-sliders-h"></i>
+                    The Chasm
+                </a>
+                <a href="#" class="nav-link" data-content="Chenyu Vale">
+                    <i class="fas fa-sliders-h"></i>
+                    Chenyu Vale
+                </a>
+                <a href="#" class="nav-link" data-content="Inazuma">
+                    <i class="fas fa-sliders-h"></i>
+                    Inazuma
+                </a>
+                <a href="#" class="nav-link" data-content="Enkanomiya">
+                    <i class="fas fa-sliders-h"></i>
+                    Enkanomiya
+                </a>
+                <a href="#" class="nav-link" data-content="Enkanomiya">
+                    <i class="fas fa-sliders-h"></i>
+                    Sumeru Rainforest
+                </a>
+                <a href="#" class="nav-link" data-content="Enkanomiya">
+                    <i class="fas fa-sliders-h"></i>
+                    Sumeru Desert
+                </a>
+                <a href="#" class="nav-link" data-content="Enkanomiya">
+                    <i class="fas fa-sliders-h"></i>
+                    Fontaine
+                </a>
+                <a href="#" class="nav-link" data-content="Enkanomiya">
+                    <i class="fas fa-sliders-h"></i>
+                    Sea of Bygone Eras
+                </a>
+                <a href="#" class="nav-link" data-content="Enkanomiya">
+                    <i class="fas fa-sliders-h"></i>
+                    Natlan
+                </a>
+            </div>
+        </div>
+
+        <!-- Quests -->
+        <div class="nav-item">
+            <div class="nav-link" data-dropdown="Quests">
+                <img src="off.png" alt="Maintenance Icon" class="nav-icon" data-active-src="on.png" data-inactive-src="off.png" />
+                Quests
+            </div>
+            <div class="dropdown-content" id="Quests">
+                <a href="#" class="nav-link" data-content="Archon">
+                    <i class="fas fa-user"></i>
+                    Archon Quests
+                </a>
+                <a href="#" class="nav-link" data-content="Story">
+                    <i class="fas fa-sliders-h"></i>
+                    Story Quests
+                </a>
+                <a href="#" class="nav-link" data-content="World">
+                    <i class="fas fa-sliders-h"></i>
+                    World Quests
+                </a>
+                <a href="#" class="nav-link" data-content="Hangout">
+                    <i class="fas fa-sliders-h"></i>
+                    Hangout Events
+                </a>
+                <a href="#" class="nav-link" data-content="Events">
+                    <i class="fas fa-sliders-h"></i>
+                    Event Quests
+                </a>
+            </div>
+        </div>
+    </div>
+        <div class="sidebar-bottom">
+            <button class="sidebar-button order-button">
+                <i class="fa-solid fa-shopping-cart"></i>
+                Place Order
+            </button>
+            <button class="sidebar-button question-button">
+                <i class="fa-solid fa-question-circle"></i>
+                Ask Question
+            </button>
+        </div>
+    </nav>
+
+        <div class="overlay"></div>
+
+
+        <main class="main-content">
+            <div class="nav-wrapper">
+                <nav class="main-nav">
+                    <div class="title-container">
+                        <h1 class="page-title">Dashboard</h1>
+                        <span class="active-subtab"></span>
+                    </div>
+                    <div class="nav-controls">
+                        <button class="filter-toggle-btn">
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                    </div>
+                </nav>
+
+                <div class="filter-nav">
+                    <div class="filter-scroll-container">
+                        <div class="filter-section">
+                            <div class="filter-header">
+                                <h6 class="region-title">SELECT REGION</h6>
+                                <div class="search-container">
+                                    <input type="text" id="dynamic-search" class="search-input" placeholder="Search...">
+                                </div>
+                            </div>
+                        
+                        <div class="filter-buttons">
+       
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+            <!-- Content sections -->
+            <div id="content-container">
+                
+            </div>
+            <footer class="main-footer">
+                <div class="footer-content">
+                    <div class="footer-section">
+                        <h3>Policy</h3>
+                        <ul>
+                            <li><a href="#">Terms of Service</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Refunds</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h3>Other Games</h3>
+                        <ul>
+                            <li><a href="#">Honkai Star Rail</a></li>
+                            <li><a href="#">Zenless Zone Zero</a></li>
+                            <li><a href="#">Wuthering Waves</a></li>
+                        </ul>
+                    </div>
+            
+                    <div class="footer-section">
+                        <h3>Connect</h3>
+                        <ul>
+                            <li><a href="#">Facebook</a></li>
+                            <li><a href="#">Discord</a></li>
+                            <li><a href="#">X</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <div class="footer-logo">
+                        <!-- Replace with your actual logo -->
+                        <img src="logo.png" alt="Yushiro Logo" />
+                    </div>
+                    <p>© 2025 Yushiro Commissions.</p>
+                    <p>In partnership with Yue Memoir.</p>
+                    <p>All rights reserved.</p>
+                </div>
+            </footer>
+        </main>
+    </div>
+
+    <script src="https://apis.google.com/js/api.js"></script>
+    
+    <script src="config.js"></script>
+    <script src="app.js"></script>
+    <script src="searchEngine.js"></script>
+    <script src="uiManager.js"></script>
+    <script src="cardGenerator.js"></script>
+
+</body>
+</html>
