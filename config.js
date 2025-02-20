@@ -1,4 +1,3 @@
-
 const CONFIG = {
     SPREADSHEET_ID: "1iKmx1aBg3panRx0oyt3YVgHwuGbEstLycdyCTQfjPcU",
     API_KEY: "AIzaSyCiUCjIPP6lGjSZMKx_CDH8PRkBa5Gnrz8",
