@@ -328,13 +328,10 @@ class CardGenerator {
         };
     
         const tagTypes = {
-            '#L': { color: '#FF4444', label: 'Limited' },
-            '#O': { color: '#FF4444', label: 'Optional' },
-            '#F': { 
-                gradient: 'linear-gradient(45deg,rgb(65, 118, 209),rgb(85, 180, 85))',
-                label: 'Freebie' 
-            },
-            '#P': { color: '#FF4444', label: 'Promo' },
+            '#L': { color: '##d12929', label: 'Limited' },
+            '#O': { color: '#4169E1', label: 'Optional' },
+            '#F': { color: '##55b455', label: 'Freebie' },
+            '#P': { color: '#cb6ce6', label: 'Promo' },
             '#S': { 
                 gradient: 'linear-gradient(45deg, #FFD700, #FFA500)',
                 label: 'Special'
